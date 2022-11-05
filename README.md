@@ -21,6 +21,7 @@ This is needed, since the EGS has no public database of its game IDs.
 |-----------------------------|------------------------------|-------------------------------------|--------------|
 | Cyberpunk 2077              | Steam, GOG                   |                                     | Experimental |
 | Darkest Dungeon             | Steam, GOG, Epic Games Store |                                     | Experimental |
+| Dishonored                  | Steam, GOG                   |                                     | Experimental |
 | Dragon's Dogma: Dark Arisen | Steam, GOG                   |                                     | Experimental |
 | Dragon Age 2                | Steam, Origin                |                                     | Experimental |
 | Dragon Age Inquisition      | Steam, Origin                |                                     | Experimental |
