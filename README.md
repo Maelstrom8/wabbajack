@@ -19,33 +19,33 @@ This is needed, since the EGS has no public database of its game IDs.
 
 | Game                        | Platform                     | Versions                            | Notes        |
 |-----------------------------|------------------------------|-------------------------------------|--------------|
-| Morrowind                   | Steam, GOG                   |                                     |              |
-| Oblivion                    | Steam, GOG                   | Normal and GotY                     |              |
-| Fallout 3                   | Steam, GOG                   | Normal and GotY                     |              |
-| Fallout New Vegas           | Steam, GOG                   | Normal and region locked RU version |              |
-| Skyrim                      | Steam                        |                                     |              |
-| Skyrim Special Edition      | Steam                        |                                     |              |
+| Cyberpunk 2077              | Steam, GOG                   |                                     | Experimental |
+| Darkest Dungeon             | Steam, GOG, Epic Games Store |                                     | Experimental |
+| Dragon's Dogma: Dark Arisen | Steam, GOG                   |                                     | Experimental |
+| Dragon Age 2                | Steam, Origin                |                                     | Experimental |
+| Dragon Age Inquisition      | Steam, Origin                |                                     | Experimental |
+| Dragon Age Origins          | Stean, GOG, Origin           |                                     | Experimental |
 | Enderal                     | Steam                        |                                     |              |
 | Enderal Special Edition     | Steam                        |                                     |              |
 | Fallout 4                   | Steam                        |                                     |              |
-| Skyrim VR                   | Steam                        |                                     |              |
 | Fallout 4 VR                | Steam                        |                                     |              |
-| Darkest Dungeon             | Steam, GOG, Epic Games Store |                                     | Experimental |
+| Fallout 3                   | Steam, GOG                   | Normal and GotY                     |              |
+| Fallout New Vegas           | Steam, GOG                   | Normal and region locked RU version |              |
+| Karryn's Prison             | Steam                        |                                     | Experimental |
+| Kerbal Space Program        | Steam, GOG                   |                                     | Experimental |
+| Sims 4                      | Steam                        |                                     | Experimental |
+| Stardew Valley              | Steam, GOG                   |                                     | Experimental |
+| Terraria                    | Steam                        | tModloader                          | Experimental |
+| TES Morrowind               | Steam, GOG                   |                                     |              |
+| TES Oblivion                | Steam, GOG                   | Normal and GotY                     |              |
+| TES Skyrim                  | Steam                        |                                     |              |
+| TES Skyrim Special Edition  | Steam                        |                                     |              |
+| TES Skyrim VR               | Steam                        |                                     |              |
 | The Witcher                 | Steam, GOG                   | Enhanced Edition                    | Experimental |
 | The Witcher 3               | Steam, GOG                   | Normal and GotY                     | Experimental |
-| Stardew Valley              | Steam, GOG                   |                                     | Experimental |
 | Kingdom Come: Deliverance   | Steam, GOG                   |                                     | Experimental |
 | Mechwarrior 5: Mercenaries  | Epic Games Store             |                                     | Experimental |
 | No Man's Sky                | Steam, GOG                   |                                     | Experimental |
-| Dragon Age Origins          | Stean, GOG, Origin           |                                     | Experimental |
-| Dragon Age 2                | Steam, Origin                |                                     | Experimental |
-| Dragon Age Inquisition      | Steam, Origin                |                                     | Experimental |
-| Dragon's Dogma: Dark Arisen | Steam, GOG                   |                                     | Experimental |
-| Kerbal Space Program        | Steam, GOG                   |                                     | Experimental |
-| Karryn's Prison             | Steam                        |                                     | Experimental |
-| Terraria                    | Steam                        | tModloader                          | Experimental |
-| Sims 4                      | Steam                        |                                     | Experimental |
-| Cyberpunk 2077              | Steam, GOG                   |                                     | Experimental |
 
 **Note about games marked with experimental support**:
 
@@ -123,7 +123,7 @@ The user then only has to copy the files from the `Game Folder Files` directory 
 
 #### Stock Game
 
-As an alternative to Game Folder Files, you may instead utilize the [Stock Game](https://github.com/wabbajack-tools/wabbajack/wiki/Keeping-The-Game-Folder-Clean-(via-local-game-installs)) feature. Stock Game is a folder within the MO2 instance folder that contains the base game files necessary to run a list, including any files you need to add to it such as `skse64_loader.exe`. Stock Game eliminates the need for the user to copy `Game Folder Files` into their game's installation directory and keeps the final installed list separate from the game's installation directory. Additionally, this allows a list author fine control over what files are included by default in the game's installation, such as SKSE, ENB, and so on. 
+As an alternative to Game Folder Files, you may instead utilize the [Stock Game](https://github.com/wabbajack-tools/wabbajack/wiki/Keeping-The-Game-Folder-Clean-(via-local-game-installs)) feature. Stock Game is a folder within the MO2 instance folder that contains the base game files necessary to run a list, including any files you need to add to it such as `skse64_loader.exe`. Stock Game eliminates the need for the user to copy `Game Folder Files` into their game's installation directory and keeps the final installed list separate from the game's installation directory. Additionally, this allows a list author fine control over what files are included by default in the game's installation, such as SKSE, ENB, and so on.
 
 Note that Stock Game has one downside: When using Stock Game, Wabbajack will expect the game to come from a single source and *only* a single source (Steam, GOG, etc.). As an example: Morrowind is available on GOG, Steam, and Beth.net. When utilizing Stock Game with a copy of Morrowind from Steam, Wabbajack will expect all users who install the list to have the game through Steam, effectively excluding users who have purchased the game from GOG or Beth.net. Because of this, it is recommended that Stock Game only be utilized with games that have a single source, such as Skyrim SE which is only available through Steam.
 
@@ -133,25 +133,27 @@ Detailed setup information for Stock Game on Skyrim SE can be found [here.](http
 
 There are some special cases where you want to change the default Wabbajack behavior for a specific mod. You can place the following flags in the notes or comments section of a mod to change how Wabbajack handles that mod.
 
-| Flag | Description | Notes |
-|------|-------------|-------|
-| `WABBAJACK_INCLUDE` | All mod files will be inlined into the `.wabbajack` file | **DO NOT USE ON DOWNLOADED MODS** As it would result in you distributing that mod. Can lead to large `.wabbajack` files if used unsparingly |
-| `WABBAJACK_NOMATCH_INCLUDE` | Any unmatched files will be inlined into the `.wabbajack` file | Useful for custom patches or generated files |
-| `WABBAJACK_ALWAYS_ENABLE` | The mod will not be ignored by Wabbajack even if it's disabled | Wabbajack will normally ignore all mods you disabled in MO2 but there are some cases where you might want to give some choice to the end user and want to have the mod included |
-| `WABBAJACK_ALWAYS_DISABLE` | The mod will always be ignored by Wabbajack | Useful if you don't want some mods included in the Modlist but still want to keep it active in your own setup |
+
+| Flag                        | Description                                                    | Notes                                                                                                                                                                           |
+| --------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `WABBAJACK_INCLUDE`         | All mod files will be inlined into the`.wabbajack` file        | **DO NOT USE ON DOWNLOADED MODS** As it would result in you distributing that mod. Can lead to large `.wabbajack` files if used unsparingly                                     |
+| `WABBAJACK_NOMATCH_INCLUDE` | Any unmatched files will be inlined into the`.wabbajack` file  | Useful for custom patches or generated files                                                                                                                                    |
+| `WABBAJACK_ALWAYS_ENABLE`   | The mod will not be ignored by Wabbajack even if it's disabled | Wabbajack will normally ignore all mods you disabled in MO2 but there are some cases where you might want to give some choice to the end user and want to have the mod included |
+| `WABBAJACK_ALWAYS_DISABLE`  | The mod will always be ignored by Wabbajack                    | Useful if you don't want some mods included in the Modlist but still want to keep it active in your own setup                                                                   |
 
 #### Tagfile Tags
 
 You can create an empty `tagfile` with no extention in any folder you want to apply this tags to. This is meant to be used with folders that aren't mods.
 
-| Flag/File | Description | Notes |
-|------|-------------|-------|
-| `WABBAJACK_INCLUDE` | All files in this folder will be inlined into the `.wabbajack` file | **DO NOT USE ON DOWNLOADED MODS** As it would result in you distributing that mod. Can lead to large `.wabbajack` files if used unsparingly |
-| `WABBAJACK_NOMATCH_INCLUDE` | Any unmatched files will be inlined into the `.wabbajack` file | Useful for custom patches or generated files |
-| `WABBAJACK_IGNORE` | All files in this folder will be ignored by Wabbajack and therefore not be put into into the `.wabbajack` file. | Useful for tools or other things outside a mod you don't want/need reproduced on a users machine. Handle with care since excluded stuff can potentially break a setup.\* |
-| `WABBAJACK_INCLUDE_SAVES` | When this file exists Wabbajack will include your save files in the `.wabbajack` file.| This will remove previous savefiles when the list gets installed as an update. |
-| `WABBAJACK_NOMATCH_INCLUDE_FILES.txt` | All files listed in this file will be included in the `.wabbajack` file. | Every file needs to be in the same folder as the tag file. Every file need to be written into a new line. Every file needs to be added with its file extension.|
-| `WABBAJACK_IGNORE_FILES.txt` | All files listed in this file will be ignored by Wabbajack and not included in the `.wabbajack` file. | Every file needs to be in the same folder as the tag file. Every file need to be written into a new line. Every file needs to be added with its file extension.|
+
+| Flag/File                             | Description                                                                                                    | Notes                                                                                                                                                                    |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `WABBAJACK_INCLUDE`                   | All files in this folder will be inlined into the`.wabbajack` file                                             | **DO NOT USE ON DOWNLOADED MODS** As it would result in you distributing that mod. Can lead to large `.wabbajack` files if used unsparingly                              |
+| `WABBAJACK_NOMATCH_INCLUDE`           | Any unmatched files will be inlined into the`.wabbajack` file                                                  | Useful for custom patches or generated files                                                                                                                             |
+| `WABBAJACK_IGNORE`                    | All files in this folder will be ignored by Wabbajack and therefore not be put into into the`.wabbajack` file. | Useful for tools or other things outside a mod you don't want/need reproduced on a users machine. Handle with care since excluded stuff can potentially break a setup.\* |
+| `WABBAJACK_INCLUDE_SAVES`             | When this file exists Wabbajack will include your save files in the`.wabbajack` file.                          | This will remove previous savefiles when the list gets installed as an update.                                                                                           |
+| `WABBAJACK_NOMATCH_INCLUDE_FILES.txt` | All files listed in this file will be included in the`.wabbajack` file.                                        | Every file needs to be in the same folder as the tag file. Every file need to be written into a new line. Every file needs to be added with its file extension.          |
+| `WABBAJACK_IGNORE_FILES.txt`          | All files listed in this file will be ignored by Wabbajack and not included in the`.wabbajack` file.           | Every file needs to be in the same folder as the tag file. Every file need to be written into a new line. Every file needs to be added with its file extension.          |
 
 \*It will finish the installation of a modlist, but the installed list might not run if you excluded a crutial part of it.
 
@@ -169,7 +171,7 @@ Wabbajack is able to analyse `.bsa` and `.ba2` files and can also create those. 
 
 #### Merges
 
-Similar to BSAs, Wabbajack is able to analyze and create merged mods. Wabbajack will source the necessary files to create the merge from aforementioned sources of mods and then rebuild the merge on the user's end. Generally it is recommended to tag merges with the `WABBAJACK_NOMATCH_INCLUDE` flag to ensure that any files generated by the merging process are also carried over to the user. Wabbajack does not by default include the files and information necessary to build or rebuild the merge in the program used to build the merge originally, only the merge itself will be installed. 
+Similar to BSAs, Wabbajack is able to analyze and create merged mods. Wabbajack will source the necessary files to create the merge from aforementioned sources of mods and then rebuild the merge on the user's end. Generally it is recommended to tag merges with the `WABBAJACK_NOMATCH_INCLUDE` flag to ensure that any files generated by the merging process are also carried over to the user. Wabbajack does not by default include the files and information necessary to build or rebuild the merge in the program used to build the merge originally, only the merge itself will be installed.
 
 #### Multiple MO2 Profiles
 
@@ -199,16 +201,17 @@ For a more detailed guide on executing the compilation process, refer to [this d
 
 In Wabbajack select _Create a Modlist_ to navigate to the configuration screen. Here you can configure some metadata for your Modlist which will later be viewable by the user.
 
-| Field | Description | Notes |
-|-------|-------------|-------|
-| Modlist Name | **REQUIRED:** Name of your Modlist | |
-| Version | **REQUIRED:** Current Version | Do note that this has to be a semantic version (1.0 or 0.1 (it can have multiple `.` separators)) and not some random text like "The best version on Earth" (this is not the Nexus)! |
-| Author | Modlist Author | Should be your name in original Modlists and/or the name of the original Modlist author if you adapted a normal Modlist to a Wabbajack Modlist |
-| Description | 700 characters Descriptions | |
-| Image | Modlist Image | Aspect ratio should be 16:9 for the best result |
-| Website | Website URL | |
-| Readme | Readme URL | |
-| NSFW | NSFW Checkbox | Only really needed for official Modlists as our Galleries have the option to hide NSFW Modlists |
+
+| Field        | Description                        | Notes                                                                                                                                                                               |
+| ------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Modlist Name | **REQUIRED:** Name of your Modlist |                                                                                                                                                                                     |
+| Version      | **REQUIRED:** Current Version      | Do note that this has to be a semantic version (1.0 or 0.1 (it can have multiple`.` separators)) and not some random text like "The best version on Earth" (this is not the Nexus)! |
+| Author       | Modlist Author                     | Should be your name in original Modlists and/or the name of the original Modlist author if you adapted a normal Modlist to a Wabbajack Modlist                                      |
+| Description  | 700 characters Descriptions        |                                                                                                                                                                                     |
+| Image        | Modlist Image                      | Aspect ratio should be 16:9 for the best result                                                                                                                                     |
+| Website      | Website URL                        |                                                                                                                                                                                     |
+| Readme       | Readme URL                         |                                                                                                                                                                                     |
+| NSFW         | NSFW Checkbox                      | Only really needed for official Modlists as our Galleries have the option to hide NSFW Modlists                                                                                     |
 
 #### Compilation Errors
 
@@ -250,6 +253,7 @@ Some Modlists that host all their stuff on GitHub:
 - [Elysium](https://github.com/TitansBane/Elysium)
 
 Other modlists opt to host all of their information on a dedicated website:
+
 - [The Phoenix Flavour](https://thephoenixflavour.com)
 - [Living Skyrim](https://www.fgsmodlists.com/living-skyrim)
 - [MOISE](https://www.fgsmodlists.com/moise)
@@ -283,20 +287,21 @@ Mods can also be hosted somewhere else, eg on other modding sites like LoversLab
   - Single-file download: `{SITE-PREFIX}/files/file/{FILE}/`
   - Attachments: `{SITE-PREFIX}/applications/core/interface/file/attachment.php?id={ID}`
 
-| Site | Requires Login | Requires Whitelist Entry | Meta File Layout | Example | Notes |
-|------|----------------|--------------------------|------------------|---------|-------|
-| [LoversLab](https://www.loverslab.com/) | Yes | No | IPS4 Site Prefix: `https://www.loverslab.com` | `directURL=https://www.loverslab.com/files/file/11116-test-file-for-wabbajack-integration/?do=download&r=737123&confirm=1&t=1` | IPS4 Site, mostly multi-file downloads |
-| [VectorPlexus](https://vectorplexus.com/) | Yes | No | IPS4 Site Prefix: `https://vectorplexus.com` | `directURL=https://vectorplexus.com/files/file/290-wabbajack-test-file` | IPS4 Site, mostly multi-file downloads |
-| [TES Alliance](http://tesalliance.org/) | Yes | No | IPS4 Site Prefix: `http://tesalliance.org/forums/index.php?` | `directURL=http://tesalliance.org/forums/index.php?/files/file/2035-wabbajack-test-file/` | IPS4 Site, mostly single-file downloads |
-| [TESAll](https://tesall.ru) | Yes | No | IPS4 Site Prefix: `https://tesall.ru` | `directURL=https://tesall.ru/files/getdownload/594545-wabbajack-test-file/` | IPS4 Site, mostly single-file downloads |
-| [ModDB](https://www.moddb.com/) | No | No | `directURL=https://www.moddb.com/downloads/start/{ID}` | `https://www.moddb.com/downloads/start/124908` | Downloads can be very slow |
-| [Patreon](https://www.patreon.com/) | No | Yes | `directURL=https://www.patreon.com/file?h={ID1}i={ID2}` | `directURL=https://www.patreon.com/file?h=34874668&i=5247431` | Only public downloads, paywalled downloads can not be downloaded |
-| [GitHub](https://github.com/) | No | No | `directURL=https://github.com/{USER}/{REPO}/releases/download/{TAG}/{FILE}` | `directURL=https://github.com/ModOrganizer2/modorganizer/releases/download/v2.3.1/Mod.Organizer-2.3.1.7z` | |
-| [Google Drive](https://drive.google.com/) | No | Yes | `directURL=https://drive.google.com/file/d/{ID}` | `directURL=https://drive.google.com/file/d/1grLRTrpHxlg7VPxATTFNfq2OkU_Plvh_/` | Google Drive is known to not be a reliable file hosting service as a file can get temporarily inaccessible if too many users try to download it |
-| [MEGA](https://mega.nz/) | No (Optional) | Yes | `directURL=https://mega.nz/#!{ID}` | `directURL=https://mega.nz/#!CsMSFaaJ!-uziC4mbJPRy2e4pPk8Gjb3oDT_38Be9fzZ6Ld4NL-k` | MEGA has a 5GB transfer quota on non-premium users, even less for non-registered ones. It is recommended to login to MEGA before downloading any files |
-| [Mediafire](https://www.mediafire.com/) | No | Yes | `directURL=https://www.mediafire.com/file/{FILE}` | `directURL=http://www.mediafire.com/file/agiqzm1xwebczpx/WABBAJACK_TEST_FILE.txt` | Medafire downloads are known to fail from time to time |
-| [Dropbox](https://www.dropbox.com/) | No | Yes | `directURL=https://www.dropbox.com/s/{FILE}?dl=0` | `directURL=https://www.dropbox.com/s/5hov3m2pboppoc2/WABBAJACK_TEST_FILE.txt?dl=0` | |
-| [Yandex Disk](https://disk.yandex.com/) | No | Yes | `directURL=https://yadi.sk/d/{ID}` | `directURL=https://yadi.sk/d/jqwQT4ByYtC9Tw` | |
+
+| Site                                      | Requires Login | Requires Whitelist Entry | Meta File Layout                                                            | Example                                                                                                                        | Notes                                                                                                                                                  |
+| ----------------------------------------- | -------------- | ------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [LoversLab](https://www.loverslab.com/)   | Yes            | No                       | IPS4 Site Prefix:`https://www.loverslab.com`                                | `directURL=https://www.loverslab.com/files/file/11116-test-file-for-wabbajack-integration/?do=download&r=737123&confirm=1&t=1` | IPS4 Site, mostly multi-file downloads                                                                                                                 |
+| [VectorPlexus](https://vectorplexus.com/) | Yes            | No                       | IPS4 Site Prefix:`https://vectorplexus.com`                                 | `directURL=https://vectorplexus.com/files/file/290-wabbajack-test-file`                                                        | IPS4 Site, mostly multi-file downloads                                                                                                                 |
+| [TES Alliance](http://tesalliance.org/)   | Yes            | No                       | IPS4 Site Prefix:`http://tesalliance.org/forums/index.php?`                 | `directURL=http://tesalliance.org/forums/index.php?/files/file/2035-wabbajack-test-file/`                                      | IPS4 Site, mostly single-file downloads                                                                                                                |
+| [TESAll](https://tesall.ru)               | Yes            | No                       | IPS4 Site Prefix:`https://tesall.ru`                                        | `directURL=https://tesall.ru/files/getdownload/594545-wabbajack-test-file/`                                                    | IPS4 Site, mostly single-file downloads                                                                                                                |
+| [ModDB](https://www.moddb.com/)           | No             | No                       | `directURL=https://www.moddb.com/downloads/start/{ID}`                      | `https://www.moddb.com/downloads/start/124908`                                                                                 | Downloads can be very slow                                                                                                                             |
+| [Patreon](https://www.patreon.com/)       | No             | Yes                      | `directURL=https://www.patreon.com/file?h={ID1}i={ID2}`                     | `directURL=https://www.patreon.com/file?h=34874668&i=5247431`                                                                  | Only public downloads, paywalled downloads can not be downloaded                                                                                       |
+| [GitHub](https://github.com/)             | No             | No                       | `directURL=https://github.com/{USER}/{REPO}/releases/download/{TAG}/{FILE}` | `directURL=https://github.com/ModOrganizer2/modorganizer/releases/download/v2.3.1/Mod.Organizer-2.3.1.7z`                      |                                                                                                                                                        |
+| [Google Drive](https://drive.google.com/) | No             | Yes                      | `directURL=https://drive.google.com/file/d/{ID}`                            | `directURL=https://drive.google.com/file/d/1grLRTrpHxlg7VPxATTFNfq2OkU_Plvh_/`                                                 | Google Drive is known to not be a reliable file hosting service as a file can get temporarily inaccessible if too many users try to download it        |
+| [MEGA](https://mega.nz/)                  | No (Optional)  | Yes                      | `directURL=https://mega.nz/#!{ID}`                                          | `directURL=https://mega.nz/#!CsMSFaaJ!-uziC4mbJPRy2e4pPk8Gjb3oDT_38Be9fzZ6Ld4NL-k`                                             | MEGA has a 5GB transfer quota on non-premium users, even less for non-registered ones. It is recommended to login to MEGA before downloading any files |
+| [Mediafire](https://www.mediafire.com/)   | No             | Yes                      | `directURL=https://www.mediafire.com/file/{FILE}`                           | `directURL=http://www.mediafire.com/file/agiqzm1xwebczpx/WABBAJACK_TEST_FILE.txt`                                              | Medafire downloads are known to fail from time to time                                                                                                 |
+| [Dropbox](https://www.dropbox.com/)       | No             | Yes                      | `directURL=https://www.dropbox.com/s/{FILE}?dl=0`                           | `directURL=https://www.dropbox.com/s/5hov3m2pboppoc2/WABBAJACK_TEST_FILE.txt?dl=0`                                             |                                                                                                                                                        |
+| [Yandex Disk](https://disk.yandex.com/)   | No             | Yes                      | `directURL=https://yadi.sk/d/{ID}`                                          | `directURL=https://yadi.sk/d/jqwQT4ByYtC9Tw`                                                                                   |                                                                                                                                                        |
 
 ## FAQ
 
